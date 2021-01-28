@@ -1,0 +1,21 @@
+
+# Here we need to build the complete infrastructure of our application
+# we need jdk or jre
+# we need jre as we need to run our application inside docker
+# we need source code or jar file
+
+FROM adoptopenjdk/openjdk11:alpine-jre
+
+#here openjdk is a jdk version
+#alpine is a light weight image which will bring jre 11
+
+VOLUME /tmp
+
+#here it will create a temporary folder for your application
+
+COPY target/OrderDetailsRestApi-0.0.1-SNAPSHOT.jar orderdetailsapi.jar
+
+#Here we are creating the jar file for our application using maven build and specifying the path where it is created
+#We then changing the name of the jar file
+
+ENTRYPOINT ["java","-jar","orderdetailsapi.jar"]
