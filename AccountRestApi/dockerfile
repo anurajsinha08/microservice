@@ -1,0 +1,7 @@
+FROM adoptopenjdk/openjdk11:alpine-jre
+
+VOLUME /tmp
+
+COPY target/AccountRestApi-0.0.1-SNAPSHOT.jar accountapi.jar
+
+ENTRYPOINT ["java","-jar","accountapi.jar"]
